@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import HelloWorld from "./c1/hellowold";
 import registerServiceWorker from "./registerServiceWorker";
+import CommentBox from "./c2/CommentBox";
 
 const styles = {
   fontFamily: "sans-serif",
@@ -10,7 +11,8 @@ const styles = {
 };
 
 const routeMap = {
-  hello: HelloWorld
+  hello: HelloWorld,
+  commentBox: CommentBox
 };
 
 class App extends React.PureComponent {
