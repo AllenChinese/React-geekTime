@@ -4,7 +4,7 @@ import "./index.css";
 import HelloWorld from "./c1/hellowold";
 import registerServiceWorker from "./registerServiceWorker";
 import CommentBox from "./c2/CommentBox";
-
+import BaseComponent from "./c3/base"
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px"
@@ -12,7 +12,8 @@ const styles = {
 
 const routeMap = {
   hello: HelloWorld,
-  commentBox: CommentBox
+  commentBox: CommentBox,
+  baseComponent: BaseComponent
 };
 
 class App extends React.PureComponent {
