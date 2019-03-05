@@ -51,7 +51,7 @@ export default class ToDoApp extends Component {
 class ToDoList extends Component {
   render() {
     return (
-      <ul>
+      <ul className="todoul">
         {this.props.items.map(item => (
           <li key={item.id}>{item.text}</li>
         ))}
