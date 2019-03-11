@@ -8,6 +8,7 @@ import BaseComponent from "./c3/base"
 import Greeting from './c4/greeting'
 import Form from './c5/form'
 import Calculator from './c6/Calculator'
+import SignUpDialog from "./c7/Dialog";
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px"
@@ -19,7 +20,8 @@ const routeMap = {
   baseComponent: BaseComponent,
   greeting: Greeting,
   form: Form,
-  calculator: Calculator
+  calculator: Calculator,
+  signUpDialog: SignUpDialog
 };
 
 class App extends React.PureComponent {
