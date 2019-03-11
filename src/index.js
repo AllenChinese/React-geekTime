@@ -7,6 +7,7 @@ import CommentBox from "./c2/CommentBox";
 import BaseComponent from "./c3/base"
 import Greeting from './c4/greeting'
 import Form from './c5/form'
+import Calculator from './c6/Calculator'
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px"
@@ -17,7 +18,8 @@ const routeMap = {
   commentBox: CommentBox,
   baseComponent: BaseComponent,
   greeting: Greeting,
-  form: Form
+  form: Form,
+  calculator: Calculator
 };
 
 class App extends React.PureComponent {
