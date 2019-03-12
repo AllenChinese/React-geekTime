@@ -9,6 +9,9 @@ import Greeting from './c4/greeting'
 import Form from './c5/form'
 import Calculator from './c6/Calculator'
 import SignUpDialog from "./c7/Dialog";
+import ProductTable from './c8/index'
+
+
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px"
@@ -21,7 +24,8 @@ const routeMap = {
   greeting: Greeting,
   form: Form,
   calculator: Calculator,
-  signUpDialog: SignUpDialog
+  signUpDialog: SignUpDialog,
+  productTable: ProductTable
 };
 
 class App extends React.PureComponent {
