@@ -10,7 +10,7 @@ import Form from './c5/form'
 import Calculator from './c6/Calculator'
 import SignUpDialog from "./c7/Dialog";
 import ProductTable from './c8/index'
-
+import Tictactoe from './c9/tictactoe'
 
 const styles = {
   fontFamily: "sans-serif",
@@ -25,7 +25,8 @@ const routeMap = {
   form: Form,
   calculator: Calculator,
   signUpDialog: SignUpDialog,
-  productTable: ProductTable
+  productTable: ProductTable,
+  tictactoe: Tictactoe
 };
 
 class App extends React.PureComponent {
