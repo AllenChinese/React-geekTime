@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import HelloWorld from "./c1/hellowold";
 import registerServiceWorker from "./registerServiceWorker";
 import CommentBox from "./c2/CommentBox";
@@ -12,7 +13,7 @@ import SignUpDialog from "./c7/Dialog";
 import ProductTable from './c8/index'
 import Tictactoe from './c9/tictactoe'
 import DigitalClock from './c10/DigitalClock'
-
+import Comment from './c11/Comment'
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px"
@@ -28,7 +29,8 @@ const routeMap = {
   signUpDialog: SignUpDialog,
   productTable: ProductTable,
   tictactoe: Tictactoe,
-  digitalClock: DigitalClock
+  digitalClock: DigitalClock,
+  comment: Comment
 };
 
 class App extends React.PureComponent {
