@@ -1,5 +1,26 @@
 import React, { Component } from 'react'
 import './index.css'
+// 判断赢家
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return squares[a];
+    }
+  }
+  return null;
+}
+
 // 棋格子
 function Square(props) {
   return (
@@ -11,44 +32,18 @@ function Square(props) {
 
 // 棋盘
 class Board extends Component {
-  constructor(props) {
-    super(props)
-    this.gameReset = this.gameReset.bind(this)
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    }
-  }
-
-  handleClick(i) {
-    const squares = this.state.squares.slice()
-    squares[i] = this.state.xIsNext ? 'X' : 'O'
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
-    })
-  }
-
-  gameReset() {
-    this.setState({
-      squares: Array(9).fill(null)
-    })
-  }
-
   renderSquare(i) {
     return (
       <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
+        value={this.props.squares[i]}
+        onClick={() => this.props.onClick(i)}
       />
     )
   }
 
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -64,11 +59,6 @@ class Board extends Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-        <br />
-        <button
-          className="reset"
-          onClick={this.gameReset}
-        >重置</button>
       </div>
     )
   }
@@ -77,18 +67,87 @@ class Board extends Component {
 export default class Tictactoe extends Component {
   constructor(props) {
     super(props)
+    this.gameReset = this.gameReset.bind(this)
+    this.jumpTo = this.jumpTo.bind(this)
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true
+    }
+  }
+
+  gameReset() {
+    this.setState({
+      history: [{
+        squares: Array(9).fill(null),
+      }],
+      xIsNext: true
+    })
+  }
+
+  handleClick(i) {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const squares = current.squares.slice()
+    if (calculateWinner(squares) || squares[i]) {
+      return
+    }
+    squares[i] = this.state.xIsNext ? 'X' : 'O'
+    this.setState({
+      history: history.concat([{
+        squares: squares
+      }]),
+      xIsNext: !this.state.xIsNext
+    })
+  }
+
+  jumpTo(move) {
+    this.setState({
+      history: this.state.history.slice(0, move),
+      xIsNext: move % 2 !== 0
+    })
   }
 
   render() {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+
+    const moves = history.map((step, move) => {
+      const desc = move ?
+        'Move #' + move :
+        'Game start';
+      return (
+        <li>
+          <a href="#" onClick={() => this.jumpTo(move)}>{desc}</a>
+        </li>
+      );
+    });
+
+    let status;
+    if (winner) {
+      status = 'Winner: ' + winner;
+    } else {
+      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    }
+
     return (
       <div className="game">
         <div className="game-board">
-          <Board />
-          {/* Board */}
+          <Board
+            squares={current.squares}
+            onClick={(i) => this.handleClick(i)}
+          />
         </div>
+        <br />
+        <button
+          className="reset"
+          onClick={this.gameReset}
+        >重置</button>
         <div className="game-info">
-          <div>{/* status */}</div>
-          <div>{/* TODO */}</div>
+          <div>{status}</div>
+          <div>{moves}</div>
         </div>
       </div>
     )
