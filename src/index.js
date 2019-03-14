@@ -11,6 +11,7 @@ import Calculator from './c6/Calculator'
 import SignUpDialog from "./c7/Dialog";
 import ProductTable from './c8/index'
 import Tictactoe from './c9/tictactoe'
+import DigitalClock from './c10/DigitalClock'
 
 const styles = {
   fontFamily: "sans-serif",
@@ -26,7 +27,8 @@ const routeMap = {
   calculator: Calculator,
   signUpDialog: SignUpDialog,
   productTable: ProductTable,
-  tictactoe: Tictactoe
+  tictactoe: Tictactoe,
+  digitalClock: DigitalClock
 };
 
 class App extends React.PureComponent {
