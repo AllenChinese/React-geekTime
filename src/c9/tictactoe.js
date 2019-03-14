@@ -13,16 +13,25 @@ function Square(props) {
 class Board extends Component {
   constructor(props) {
     super(props)
+    this.gameReset = this.gameReset.bind(this)
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      xIsNext: true
     }
   }
 
   handleClick(i) {
     const squares = this.state.squares.slice()
-    squares[i] = 'X'
+    squares[i] = this.state.xIsNext ? 'X' : 'O'
     this.setState({
-      squares: squares
+      squares: squares,
+      xIsNext: !this.state.xIsNext
+    })
+  }
+
+  gameReset() {
+    this.setState({
+      squares: Array(9).fill(null)
     })
   }
 
@@ -36,7 +45,7 @@ class Board extends Component {
   }
 
   render() {
-    const status = 'Next player: X'
+    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
     return (
       <div>
         <div className="status">{status}</div>
@@ -55,6 +64,11 @@ class Board extends Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+        <br />
+        <button
+          className="reset"
+          onClick={this.gameReset}
+        >重置</button>
       </div>
     )
   }
