@@ -14,6 +14,7 @@ import ProductTable from './c8/index'
 import Tictactoe from './c9/tictactoe'
 import DigitalClock from './c10/DigitalClock'
 import Comment from './c11/Comment'
+import MyContext from './c12/context'
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px"
@@ -30,7 +31,8 @@ const routeMap = {
   productTable: ProductTable,
   tictactoe: Tictactoe,
   digitalClock: DigitalClock,
-  comment: Comment
+  comment: Comment,
+  myContext: MyContext
 };
 
 class App extends React.PureComponent {
