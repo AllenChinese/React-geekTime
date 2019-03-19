@@ -15,6 +15,7 @@ import Tictactoe from './c9/tictactoe'
 import DigitalClock from './c10/DigitalClock'
 import Comment from './c11/Comment'
 import MyContext from './c12/context'
+import Myorder from './c13/myorder'
 const styles = {
   fontFamily: "sans-serif",
   paddingLeft: "250px"
@@ -32,7 +33,8 @@ const routeMap = {
   tictactoe: Tictactoe,
   digitalClock: DigitalClock,
   comment: Comment,
-  myContext: MyContext
+  myContext: MyContext,
+  myorder: Myorder
 };
 
 class App extends React.PureComponent {
