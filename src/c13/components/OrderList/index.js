@@ -13,7 +13,8 @@ class OrderList extends Component {
           shop: '外婆家',
           price: 30,
           isEvaluate: true,
-          evaluteContent: ''
+          evaluteContent: '',
+          stars: 0
         }, {
           id: 2,
           pic: require('../../../assets/images/img2.jpg'),
@@ -21,7 +22,8 @@ class OrderList extends Component {
           shop: '新白鹿',
           price: 40,
           isEvaluate: false,
-          evaluteContent: ''
+          evaluteContent: '',
+          stars: 0
         }, {
           id: 3,
           pic: require('../../../assets/images/img3.jpg'),
@@ -29,7 +31,8 @@ class OrderList extends Component {
           shop: '喵记',
           price: 38,
           isEvaluate: false,
-          evaluteContent: ''
+          evaluteContent: '',
+          stars: 0
         }, {
           id: 4,
           pic: require('../../../assets/images/img4.jpg'),
@@ -37,17 +40,47 @@ class OrderList extends Component {
           shop: '每日鲜花家',
           price: 120,
           isEvaluate: false,
-          evaluteContent: ''
+          evaluteContent: '',
+          stars: 0
+        }, {
+          id: 5,
+          pic: require('../../../assets/images/img4.jpg'),
+          title: '鲜花1',
+          shop: '每日鲜花家1',
+          price: 120,
+          isEvaluate: false,
+          evaluteContent: '',
+          stars: 0
         },
       ]
     }
   }
+
+  handleSubmit = (id, comment, stars) => {
+    const newOrderList = this.state.orderList.map(item => {
+      return item.id === id ?
+        {
+          ...item,
+          evaluteContent: comment,
+          stars,
+          isEvaluate: true
+        } : item
+    })
+    console.log(newOrderList)
+    this.setState({
+      orderList: newOrderList
+    })
+  }
+
   render() {
     return (
       <div className="orderList">
         {
           this.state.orderList.map(item =>
-            <OrderItem key={item.id} item={item} />
+            <OrderItem
+              key={item.id}
+              item={item}
+              onSubmit={this.handleSubmit} />
           )
         }
       </div>
