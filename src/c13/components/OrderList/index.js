@@ -44,8 +44,12 @@ class OrderList extends Component {
   }
   render() {
     return (
-      <div>
-        <OrderItem orderList={this.state.orderList} />
+      <div className="orderList">
+        {
+          this.state.orderList.map(item =>
+            <OrderItem key={item.id} item={item} />
+          )
+        }
       </div>
     );
   }
