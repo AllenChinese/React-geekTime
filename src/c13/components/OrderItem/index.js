@@ -12,12 +12,12 @@ class OrderItem extends Component {
             <img src={item.pic} className="orderItem__pic" alt="" />
           </div>
           <div className="orderItem__content">
-            <div className="orderItem__product">产品名称</div>
-            <div className="orderItem__shop">商家名称</div>
+            <div className="orderItem__product">{item.title}</div>
+            <div className="orderItem__shop">{item.shop}</div>
             <div className="orderItem__detail">
-              <div className="orderItem__price">$13</div>
+              <div className="orderItem__price">${item.price}</div>
               <div>
-                <button className="orderItem__btn active">评价</button>
+                <button className={item.isEvaluate ? 'orderItem__btn' : 'orderItem__btn active'}>评价</button>
               </div>
             </div>
           </div>

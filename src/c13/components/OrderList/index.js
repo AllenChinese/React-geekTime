@@ -12,7 +12,7 @@ class OrderList extends Component {
           title: '西红柿🍅',
           shop: '外婆家',
           price: 30,
-          isEvaluate: false,
+          isEvaluate: true,
           evaluteContent: ''
         }, {
           id: 2,
